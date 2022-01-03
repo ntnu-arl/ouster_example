@@ -7,7 +7,7 @@
 #define PCL_NO_PRECOMPILE
 #include <pcl/point_types.h>
 
-#include <Eigen/Eigen>
+#include <Eigen/Core>
 #include <chrono>
 #include <functional>
 
