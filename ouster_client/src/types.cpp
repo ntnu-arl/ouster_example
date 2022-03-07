@@ -322,6 +322,7 @@ std::string to_string(timestamp_mode mode) {
     return res ? res.value() : "UNKNOWN";
 }
 
+
 timestamp_mode timestamp_mode_of_string(const std::string& s) {
     auto res = rlookup(impl::timestamp_mode_strings, s.c_str());
     return res ? res.value() : timestamp_mode::TIME_FROM_UNSPEC;

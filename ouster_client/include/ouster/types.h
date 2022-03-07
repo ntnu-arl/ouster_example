@@ -46,6 +46,7 @@ extern const mat4d default_lidar_to_sensor_transform;
  * Constants used for configuration. Refer to the sensor documentation for the
  * meaning of each option.
  */
+
 enum lidar_mode {
     MODE_UNSPEC = 0,
     MODE_512x10,
@@ -119,6 +120,8 @@ struct sensor_config {
     optional<int> columns_per_packet;
     optional<UDPProfileLidar> udp_profile_lidar;
     optional<UDPProfileIMU> udp_profile_imu;
+    
+    optional<bool> filter_enable;
 };
 
 struct data_format {

@@ -43,6 +43,22 @@ int main(int argc, char** argv) {
         return EXIT_FAILURE;
     }
 
+    // auto timestamp_mode_arg = nh.param("timestamp_mode", std::string{});
+
+    ouster_ros::Filter filter;
+    auto filter_enabled = nh.param("filter_enabled", false);
+    filter.enabled = filter_enabled;
+    if (filter.enabled) ROS_WARN("Filter enabled");
+    std::vector<double> param_val;
+    nh.getParam("filter_min", param_val);
+    filter.val_min[0] = param_val[0];
+    filter.val_min[1] = param_val[1];
+    filter.val_min[2] = param_val[2];
+    nh.getParam("filter_max", param_val);
+    filter.val_max[0] = param_val[0];
+    filter.val_max[1] = param_val[1];
+    filter.val_max[2] = param_val[2];
+
     auto info = sensor::parse_metadata(cfg.response.metadata);
     uint32_t H = info.format.pixels_per_column;
     uint32_t W = info.format.columns_per_frame;
@@ -83,7 +99,7 @@ int main(int argc, char** argv) {
                 });
             if (h != ls.headers.end()) {
                 for (int i = 0; i < n_returns; i++) {
-                    scan_to_cloud(xyz_lut, h->timestamp, ls, cloud, i);
+                    scan_to_cloud(xyz_lut, h->timestamp, ls, cloud, filter, i);
                     lidar_pubs[i].publish(ouster_ros::cloud_to_cloud_msg(
                         cloud, h->timestamp, sensor_frame));
                 }
