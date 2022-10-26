@@ -36,6 +36,7 @@ namespace sensor = ouster::sensor;
 namespace viz = ouster::viz;
 
 using pixel_type = uint16_t;
+// using pixel_type = uint8_t;
 const size_t pixel_value_max = std::numeric_limits<pixel_type>::max();
 
 sensor_msgs::ImagePtr make_image_msg(size_t H, size_t W,
