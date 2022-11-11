@@ -130,7 +130,7 @@ void scan_to_cloud(const ouster::XYZLut& xyz_lut,
 
     auto points = ouster::cartesian(range, xyz_lut);
 
-    for (auto u = 0; u < ls.h; u++) {
+    for (auto u = 0; u < ls.h; u = u + 2) {
         for (auto v = 0; v < ls.w; v++) {
             const auto xyz = points.row(u * ls.w + v);
             const auto ts = (ls.header(v).timestamp - scan_ts).count();
