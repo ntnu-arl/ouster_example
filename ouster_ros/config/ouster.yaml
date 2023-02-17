@@ -16,5 +16,5 @@
   metadata: /home/pol/repos/drivers_ws/src/ouster_example/ouster_ros/metadata/os0_64.json
   # filter points close to sensor origin: NONE, BOX, ELLIPSOID    
   filter_enabled: true
-  filter_min: [-1.0, -1.0, -1.0]           
-  filter_max: [1.0, 1.0, 1.0]           
+  filter_min: [-0.4, -0.4, -0.3]           
+  filter_max: [0.4, 0.4, 0.3]           

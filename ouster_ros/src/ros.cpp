@@ -121,7 +121,7 @@ void scan_to_cloud(const ouster::XYZLut& xyz_lut,
 
     auto points = ouster::cartesian(range, xyz_lut);
     if (filter.enabled) {
-        std::cout << "1) ";
+        // std::cout << "1) ";
         float x, y, z;
         for (auto u = 0; u < ls.h; u++) {
             for (auto v = 0; v < ls.w; v++) {
